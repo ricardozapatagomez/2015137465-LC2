@@ -1,0 +1,110 @@
+﻿@model IEnumerable<_2015104916.Entities.Entities.Propietario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table     id="tbl_Propietarios"       class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Dni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Licencia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Licencia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodigoPropietario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodigoPropietario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoPropietario })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            var table = $("#tbl_Propietarios").DataTable({
+                ajax: {
+                    url: "/api/Propietarios",
+                    dataSrc: ""
+
+
+                }, columns:
+                [
+                    { data: "CodigoPropietario" },
+                    { data: "dni" },
+                    { data: "Nombres" },
+                    { data: "Apellidos" },
+                    { data: "Licencia" },
+                   
+
+
+                    {
+                        data: "CodigoPropietario",
+                        render: function (data, type, alumno) {
+                            return "<a href='/Propietarios/update/" + data + "'>Actualizar</a>";
+                        }
+                    },
+                    {
+                        data: "CodigoPropietario",
+                        render: function (data, type, alumno) {
+                            return "<a href='/Propietarios/details/" + data + "'>Detalles</a>";
+                        }
+
+                    },
+                    {
+                        data: "CodigoPropietario",
+                        render: function (data) {
+                            return "<button class= 'btn btn-link js-delete' data-Propietarios-id=" + data + ">Borrar</button";
+                        }
+
+                    }
+
+                ]
+            });
+
+        });
+
+
+
+    </script>
+
+}
+
+
+
+

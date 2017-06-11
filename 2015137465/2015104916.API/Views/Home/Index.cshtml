@@ -1,0 +1,319 @@
+﻿<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
+        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
+        is an ideal platform for building RESTful applications on the .NET Framework.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+    </div>
+</div>
+@section scripts
+    {
+       <script>
+           $document.ready(function () {
+               var table = $("table_Asientos").DataTable({
+                   ajax: {
+                       url: "api/asientos",
+                       dataSrc: ""
+                   },
+                   columns: [
+                       { data: "NumeroSerie" },
+                       { data: "Carro.CodigoCarro" },
+                       {
+                           data: "CodigoAsiento",
+                           render: function (data, type, asiento) {
+                               return "<a href='/asiento/update" + data + "'>Actualizar</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoAsiento",
+                           render: function (data, type, asiento) {
+                               return "<a href='/asiento/details" + data + "'>Detalles</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoAsiento",
+                           render: function (data) {
+                               return "<button class='btn btn-link js-delete data-asiento-id=" + data + ">Borrar</button>";
+                           }
+                       }
+                   ]
+               });
+           });
+       </script>
+       <script>
+           $document.ready(function () {
+               var table = $("table_Automoviles").DataTable({
+                   ajax: {
+                       url: "api/automoviles",
+                       dataSrc: ""
+                   },
+                   columns: [
+                       { data: "NumserieCarro" },
+                       { data: "NumserieChasis" },
+                       { data: "Ensambladora.CodigoEsambladora" },
+                       { data: "TipoAuto.TipoAuto" },
+                       {
+                           data: "CodigoCarro",
+                           render: function (data, type, automovil) {
+                               return "<a href='/automovil/update" + data + "'>Actualizar</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoCarro",
+                           render: function (data, type, automovil) {
+                               return "<a href='/automovil/details" + data + "'>Detalles</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoCarro",
+                           render: function (data) {
+                               return "<button class='btn btn-link js-delete data-automovil-id=" + data + ">Borrar</button>";
+                           }
+                       }
+                   ]
+               });
+           });
+</script>
+<script>
+           $document.ready(function () {
+               var table = $("table_Buses").DataTable({
+                   ajax: {
+                       url: "api/buses",
+                       dataSrc: ""
+                   },
+                   columns: [
+                       { data: "NumserieCarro" },
+                       { data: "NumserieChasis" },
+                       { data: "Ensambladora.CodigoEsambladora" },
+                       { data: "TipoBus.TipoBus" },
+                       {
+                           data: "CodigoCarro",
+                           render: function (data, type, bus) {
+                               return "<a href='/bus/update" + data + "'>Actualizar</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoCarro",
+                           render: function (data, type, bus) {
+                               return "<a href='/bus/details" + data + "'>Detalles</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoCarro",
+                           render: function (data) {
+                               return "<button class='btn btn-link js-delete data-bus-id=" + data + ">Borrar</button>";
+                           }
+                       }
+                   ]
+               });
+           });
+</script>
+<script>
+           $document.ready(function () {
+               var table = $("table_Cintuones").DataTable({
+                   ajax: {
+                       url: "api/cinturones",
+                       dataSrc: ""
+                   },
+                   columns: [
+                       { data: "NumeroSerie" },
+                       { data: "Metraje" },
+                       { data: "Asiento.CodigoAsiento" },
+                       {
+                           data: "CodigoCinturon",
+                           render: function (data, type, cinturon) {
+                               return "<a href='/cinturon/update" + data + "'>Actualizar</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoCinturon",
+                           render: function (data, type, cinturon) {
+                               return "<a href='/cinturon/details" + data + "'>Detalles</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoCinturon",
+                           render: function (data) {
+                               return "<button class='btn btn-link js-delete data-cinturon-id=" + data + ">Borrar</button>";
+                           }
+                       }
+                   ]
+               });
+           });
+</script>
+<script>
+           $document.ready(function () {
+               var table = $("table_Ensambladoras").DataTable({
+                   ajax: {
+                       url: "api/ensamladoras",
+                       dataSrc: ""
+                   },
+                   columns: [
+                       { data: "Nombre" },
+                       {
+                           data: "CodigoEsambladora",
+                           render: function (data, type, ensambladora) {
+                               return "<a href='/ensambladora/update" + data + "'>Actualizar</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoEsambladora",
+                           render: function (data, type, ensambladora) {
+                               return "<a href='/ensambladora/details" + data + "'>Detalles</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoEsambladora",
+                           render: function (data) {
+                               return "<button class='btn btn-link js-delete data-ensambladora-id=" + data + ">Borrar</button>";
+                           }
+                       }
+                   ]
+               });
+           });
+</script>
+<script>
+           $document.ready(function () {
+               var table = $("table_Llantas").DataTable({
+                   ajax: {
+                       url: "api/llantas",
+                       dataSrc: ""
+                   },
+                   columns: [
+                       { data: "NumeroSerie" },
+                       { data: "Carro.CodigoCarro" },
+                       {
+                           data: "CodigoLlanta",
+                           render: function (data, type, llanta) {
+                               return "<a href='/llanta/update" + data + "'>Actualizar</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoLlanta",
+                           render: function (data, type, llanta) {
+                               return "<a href='/llanta/details" + data + "'>Detalles</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoLlanta",
+                           render: function (data) {
+                               return "<button class='btn btn-link js-delete data-llanta-id=" + data + ">Borrar</button>";
+                           }
+                       }
+                   ]
+               });
+           });
+</script>
+<script>
+           $document.ready(function () {
+               var table = $("table_Parabrisas").DataTable({
+                   ajax: {
+                       url: "api/parabrisas",
+                       dataSrc: ""
+                   },
+                   columns: [
+                       { data: "NumeroSerie" },
+                       {
+                           data: "CodigoParabrisas",
+                           render: function (data, type, parabrisas) {
+                               return "<a href='/parabrisas/update" + data + "'>Actualizar</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoParabrisas",
+                           render: function (data, type, parabrisas {
+                               return "<a href='/parabrisas/details" + data + "'>Detalles</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoParabrisas",
+                           render: function (data) {
+                               return "<button class='btn btn-link js-delete data-parabrisas-id=" + data + ">Borrar</button>";
+                           }
+                       }
+                   ]
+               });
+           });
+</script>
+<script>
+           $document.ready(function () {
+               var table = $("table_Propietarios").DataTable({
+                   ajax: {
+                       url: "api/propietarios",
+                       dataSrc: ""
+                   },
+                   columns: [
+                       { data: "Dni" },
+                       { data: "Nombres" },
+                       { data: "Apellidos" },
+                       { data: "Licencia" },
+                       {
+                           data: "CodigoPropietario",
+                           render: function (data, type, propietario) {
+                               return "<a href='/propietario/update" + data + "'>Actualizar</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoPropietario",
+                           render: function (data, type, propietario) {
+                               return "<a href='/propietario/details" + data + "'>Detalles</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoPropietario",
+                           render: function (data) {
+                               return "<button class='btn btn-link js-delete data-propietario-id=" + data + ">Borrar</button>";
+                           }
+                       }
+                   ]
+               });
+           });
+</script>
+<script>
+           $document.ready(function () {
+               var table = $("table_Volantes").DataTable({
+                   ajax: {
+                       url: "api/volantes",
+                       dataSrc: ""
+                   },
+                   columns: [
+                       { data: "NumeroSerie" },
+                       {
+                           data: "CodigoVolante",
+                           render: function (data, type, volante) {
+                               return "<a href='/volante/update" + data + "'>Actualizar</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoVolante",
+                           render: function (data, type, volante) {
+                               return "<a href='/volante/details" + data + "'>Detalles</a>";
+                           }
+                       },
+                       {
+                           data: "CodigoVolante",
+                           render: function (data) {
+                               return "<button class='btn btn-link js-delete data-volante-id=" + data + ">Borrar</button>";
+                           }
+                       }
+                   ]
+               });
+           });
+</script>
+    }

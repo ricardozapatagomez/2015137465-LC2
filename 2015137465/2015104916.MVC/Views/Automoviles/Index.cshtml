@@ -1,0 +1,70 @@
+﻿@model IEnumerable<_2015104916.Entities.Entities.Automovil>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ensambladora.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parabrisas.NumeroSerie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Propietario.Dni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volante.NumeroSerie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumserieCarro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumserieChasis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoAuto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ensambladora.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parabrisas.NumeroSerie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Propietario.Dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Volante.NumeroSerie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumserieCarro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumserieChasis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoAuto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodigoCarro }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodigoCarro }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoCarro })
+        </td>
+    </tr>
+}
+
+</table>
